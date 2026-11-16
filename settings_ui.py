@@ -613,8 +613,13 @@ class SettingsWindow(object):
                          on_change=lambda v: self.app.toggle_through(v))
 
         r += 1
-        self._label(f, r, 0, "滚轮延迟", "两次滚轮翻页的最小间隔，太小会一滚飞好几页。")
-        self._entry(f, r, 1, "wheel_delay", suffix="ms", cast=int, lo=0, hi=2000)
+        self._label(f, r, 0, "滚轮行数", "滚轮转一格往下走几行。默认 1。窗口只有三四行高的话，"
+                                        "别超过 2，否则一滚就是大半屏。")
+        self._entry(f, r, 1, "wheel_lines", suffix="行", cast=int, lo=1, hi=10)
+        self._label(f, r, 2, "滚轮延迟", "两次滚轮之间的最小间隔。太小会一滚飞好几页。")
+        self._entry(f, r, 3, "wheel_delay", suffix="ms", cast=int, lo=0, hi=2000)
+
+        r += 1
         self._label(f, r, 2, "滚轮方向反转")
         self._switch_row(f, r, 3, "wheel_invert")
 

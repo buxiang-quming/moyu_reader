@@ -165,6 +165,7 @@ class ReaderApp(object):
         self.click_pin = bool(s.get("click_pin"))
         self.window_movable = bool(s.get("window_movable"))
         self.wheel_delay = int(s.get("wheel_delay")) / 1000.0
+        self.wheel_lines = max(1, int(s.get("wheel_lines") or 1))
         self.wheel_invert = bool(s.get("wheel_invert"))
         self.hide_keep_br = int(s.get("hide_keep_br"))
         self.hide_on_blur = bool(s.get("hide_on_blur"))
@@ -1133,6 +1134,7 @@ class ReaderApp(object):
             return
         self._last_wheel = now
         try:
+            n = self.wheel_lines
             up = e.delta > 0
             if self.wheel_invert:
                 up = not up
@@ -1140,13 +1142,13 @@ class ReaderApp(object):
                 if self.text.yview()[0] <= 0.001:
                     self.prev_chapter()
                     return
-                self.text.yview_scroll(-3, "units")
+                self.text.yview_scroll(-n, "units")
             else:
                 if self.text.yview()[1] >= 0.999:
                     if self.continuous:
                         self.next_chapter()
                     return
-                self.text.yview_scroll(3, "units")
+                self.text.yview_scroll(n, "units")
             self._update_progress()
         except Exception:
             pass

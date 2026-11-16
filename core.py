@@ -259,6 +259,7 @@ DEFAULTS = {
     "mouse_page": False,          # 单击翻页（关掉则单击不做事）
     "click_pin": False,           # 单击正文钉住（默认关：太容易误触，一碰就再也不隐藏）
     "wheel_delay": 160,           # 滚轮两次翻页最小间隔 ms
+    "wheel_lines": 1,             # 滚轮一次滚几行（窗口很矮，默认 1 行，别再大了）
     "wheel_invert": False,        # 滚轮方向反转
     "auto_page": 0,               # 自动翻页间隔 ms，0=关
     "continuous": True,           # 章末自动进入下一章
