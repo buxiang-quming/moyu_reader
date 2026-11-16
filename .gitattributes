@@ -1,0 +1,10 @@
+# 统一换行符，避免跨平台 clone 后 .bat 被转成 LF 导致 cmd 解析失败
+* text=auto
+
+*.py    text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+
+# Windows 批处理必须是 CRLF，否则 goto / 括号块会报错
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
